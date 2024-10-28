@@ -7,12 +7,15 @@ loom {
 }
 
 dependencies {
-    modCompileOnly ("me.lucko:fabric-permissions-api:0.1-SNAPSHOT")
+    modCompileOnly ("me.lucko:fabric-permissions-api:0.3.2")
     modApi include("xyz.nucleoid:packet-tweaker:${packet_tweaker_version}") {
         transitive(false)
     }
     modCompileOnly "xyz.nucleoid:disguiselib-fabric:1.3.3"
-    modCompileOnly "org.geysermc.floodgate:api:2.2.0-SNAPSHOT"
+    modCompileOnly ("org.geysermc.floodgate:api:2.2.3-SNAPSHOT") {
+        exclude(group: "org.geysermc.cumulus", module: "cumulus")
+    }
+    modCompileOnly "org.geysermc.cumulus:cumulus:1.1.2-SNAPSHOT"
 }
 
 afterEvaluate {

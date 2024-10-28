@@ -44,7 +44,7 @@ dependencies {
 
     //modRuntime "supercoder79:databreaker:0.2.7"
 
-    modCompileOnly('maven.modrinth:lithium:mc1.21-0.12.7')
+    modCompileOnly('maven.modrinth:lithium:mc1.21.1-0.14.0-beta.1')
 
     //modCompileOnly ('nl.theepicblock:PolyMc:5.1.0+1.19')
     modCompileOnly('com.github.TheEpicBlock:PolyMc:5.6.1') {
@@ -52,15 +52,15 @@ dependencies {
     }
 
 
-    modCompileOnly /*modLocalRuntime*/("maven.modrinth:jade:15.1.5+fabric")
-    modCompileOnly /*modLocalRuntime*/("mcp.mobius.waila:wthit:fabric-12.2.2")
+    modCompileOnly /*modLocalRuntime*/("maven.modrinth:jade:15.8.2+fabric")
+    modCompileOnly /*modLocalRuntime*/("mcp.mobius.waila:wthit:fabric-12.4.2")
 
-    modCompileOnly /*modLocalRuntime*/ ("me.shedaniel:RoughlyEnoughItems-fabric:16.0.744")
-    modCompileOnly /*modLocalRuntime*/("dev.emi:emi-fabric:1.1.8+1.21")
+    modCompileOnly /*modLocalRuntime*/ ("me.shedaniel:RoughlyEnoughItems-fabric:16.0.788")
+    modCompileOnly /*modLocalRuntime*/("dev.emi:emi-fabric:1.1.16+1.21.1")
 
     //modCompileOnlyApi modLocalRuntime("mezz.jei:jei-1.19-common:11.0.0.206")
     //modCompileOnlyApi modLocalRuntime("mezz.jei:jei-1.19-fabric:11.0.0.206")
-    modCompileOnly /*modRuntimeOnly*/("maven.modrinth:jei:19.0.0.2")
+    modCompileOnly /*modRuntimeOnly*/("maven.modrinth:jei:19.21.0.247")
 
     //modCompileOnly ("mcjty.theoneprobe:theoneprobe-fabric:1.18.2-5.0.9")
     //modRuntimeOnly ("mcjty.theoneprobe:theoneprobe-fabric:1.18.2-5.0.9")
@@ -70,7 +70,7 @@ dependencies {
     modCompileOnly("xyz.nucleoid:server-translations-api:2.3.1+1.21-pre2")
     //modLocalRuntime("xyz.nucleoid:server-translations-api:2.0.0-beta.2+1.19.4-pre2")
 
-    modCompileOnly 'com.github.iPortalTeam:ImmersivePortalsMod:v5.1.7-mc1.20.4'
+    modCompileOnly 'com.github.iPortalTeam:ImmersivePortalsMod:v6.0.3-mc1.21.1'
 
     //modLocalRuntime 'maven.modrinth:immersiveportals:v3.0.2-mc1.20'
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
