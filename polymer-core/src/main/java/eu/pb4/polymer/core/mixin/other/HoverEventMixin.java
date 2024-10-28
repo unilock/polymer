@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 @Mixin(HoverEvent.class)
 public abstract class HoverEventMixin {
-    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;xmap(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;"))
+    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;xmap(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;", remap = false))
     private static Codec<HoverEvent> patchCodec(Codec<HoverEvent> codec) {
         return codec.xmap(Function.identity(), content -> { // Encode
             if (PolymerCommonUtils.isServerNetworkingThread()) {

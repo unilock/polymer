@@ -24,7 +24,7 @@ public class ItemStackMixin {
         return original && !(type instanceof PolymerTooltipType);
     }
 
-    @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;lazyInitialized(Ljava/util/function/Supplier;)Lcom/mojang/serialization/Codec;"))
+    @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;lazyInitialized(Ljava/util/function/Supplier;)Lcom/mojang/serialization/Codec;", remap = false))
     private static Supplier<Codec<ItemStack>> patchCodec(Supplier<Codec<ItemStack>> codec) {
         return () -> codec.get().xmap(content -> { // Decode
             if (PolymerCommonUtils.isServerNetworkingThread()) {

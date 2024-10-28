@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(PolyRegistry.class)
 public abstract class PolyRegistryMixin {
-    @Shadow public abstract <T> T getSharedValues(SharedValuesKey<T> key);
+    @Shadow(remap = false) public abstract <T> T getSharedValues(SharedValuesKey<T> key);
 
-    @Inject(method = "<init>", at = @At("TAIL"))
+    @Inject(method = "<init>", at = @At("TAIL"), remap = false)
     private void polymer_block_catchRegistry(CallbackInfo ci) {
         var blockStateManager = this.getSharedValues(BlockStateManager.KEY);
         for (var takenState : BlockExtBlockMapper.INSTANCE.stateMap.keySet()) {

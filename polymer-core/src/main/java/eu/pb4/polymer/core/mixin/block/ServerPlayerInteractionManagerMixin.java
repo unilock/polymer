@@ -153,7 +153,7 @@ public abstract class ServerPlayerInteractionManagerMixin {
 
     }
 
-    @Redirect(method = "processBlockBreakingAction", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"), require = 0)
+    @Redirect(method = "processBlockBreakingAction", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V", remap = false), require = 0)
     private void polymer$noOneCaresAboutMismatch(Logger instance, String s, Object o, Object o2) {
     }
 }

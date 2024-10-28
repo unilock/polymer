@@ -25,7 +25,7 @@ public class ComponentChangesMixin {
     @Mutable
     @Shadow @Final public static PacketCodec<RegistryByteBuf, ComponentChanges> PACKET_CODEC;
 
-    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;xmap(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;"))
+    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;xmap(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;", remap = false))
     private static Codec<ComponentChanges> patchCodec(Codec<ComponentChanges> codec) {
         return codec.xmap(Function.identity(), content -> { // Encode
             if (PolymerCommonUtils.isServerNetworkingThread()) {

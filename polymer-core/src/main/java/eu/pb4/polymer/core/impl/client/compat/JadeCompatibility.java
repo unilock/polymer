@@ -80,12 +80,12 @@ public class JadeCompatibility implements IWailaPlugin {
                 var formatting = IWailaConfig.get().getFormatting();
                 tooltip.clear();
                 try {
-                    tooltip.add(IThemeHelper.get().title(block.block().name().getString()), Identifiers.CORE_OBJECT_NAME);
+                    tooltip.add(IThemeHelper.get().title(block.block().name().getString()), JadeIds.CORE_OBJECT_NAME);
                 } catch (Throwable e) {
                 }
                 try {
 
-                    RegistryNameProvider.Mode mode = config.getEnum(Identifiers.DEBUG_REGISTRY_NAME);
+                    RegistryNameProvider.Mode mode = config.getEnum(JadeIds.DEBUG_REGISTRY_NAME);
 
                     if (mode != RegistryNameProvider.Mode.OFF) {
                         if (mode != RegistryNameProvider.Mode.ADVANCED_TOOLTIPS || MinecraftClient.getInstance().options.advancedItemTooltips) {
@@ -97,7 +97,7 @@ public class JadeCompatibility implements IWailaPlugin {
 
                 try {
 
-                    if (config.get(Identifiers.DEBUG_BLOCK_STATES)) {
+                    if (config.get(JadeIds.DEBUG_BLOCK_STATES)) {
                         IElementHelper helper = IElementHelper.get();
                         ITooltip box = helper.tooltip();
                         block.states().entrySet().forEach((p) -> {
@@ -114,13 +114,13 @@ public class JadeCompatibility implements IWailaPlugin {
                 }
                 try {
 
-                    if (config.get(Identifiers.CORE_MOD_NAME)) {
+                    if (config.get(JadeIds.CORE_MOD_NAME)) {
                         String modName = ModIdentification.getModName(block.block().identifier());
 
                         if (modName == null || modName.isEmpty() || modName.equals("Minecraft")) {
                             modName = "Server";
                         }
-                        tooltip.add(IThemeHelper.get().modName(modName), Identifiers.CORE_MOD_NAME);
+                        tooltip.add(IThemeHelper.get().modName(modName), JadeIds.CORE_MOD_NAME);
                     }
                 } catch (Throwable e) {
                 }
@@ -165,13 +165,13 @@ public class JadeCompatibility implements IWailaPlugin {
                 if (type != null) {
                     try {
 
-                        tooltip.add(IThemeHelper.get().title(entity.getDisplayName().getString()), Identifiers.CORE_OBJECT_NAME);
+                        tooltip.add(IThemeHelper.get().title(entity.getDisplayName().getString()), JadeIds.CORE_OBJECT_NAME);
                     } catch (Throwable e) {
                     }
 
                     var formatting = IWailaConfig.get().getFormatting();
 
-                    RegistryNameProvider.Mode mode = config.getEnum(Identifiers.DEBUG_REGISTRY_NAME);
+                    RegistryNameProvider.Mode mode = config.getEnum(JadeIds.DEBUG_REGISTRY_NAME);
                     try {
 
                         if (mode != RegistryNameProvider.Mode.OFF) {
@@ -182,13 +182,13 @@ public class JadeCompatibility implements IWailaPlugin {
                     } catch (Throwable e) {
                     }
                     try {
-                        if (config.get(Identifiers.CORE_MOD_NAME)) {
+                        if (config.get(JadeIds.CORE_MOD_NAME)) {
                             String modName = ModIdentification.getModName(type.identifier());
 
                             if (modName == null || modName.isEmpty() || modName.equals("Minecraft")) {
                                 modName = "Server";
                             }
-                            tooltip.add(IThemeHelper.get().modName(modName), Identifiers.CORE_MOD_NAME);
+                            tooltip.add(IThemeHelper.get().modName(modName), JadeIds.CORE_MOD_NAME);
                         }
                     } catch (Throwable e) {
                     }
