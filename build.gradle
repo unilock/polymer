@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6.+'
+    id 'fabric-loom' version '1.8.+'
     id "com.modrinth.minotaur" version "2.+"
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
@@ -114,13 +114,30 @@ subprojects {
 }
 
 dependencies {
-    api include(project(path: ":polymer-autohost", configuration: "namedElements"))
-    api include(project(path: ":polymer-core", configuration: "namedElements"))
-    api include(project(path: ":polymer-common", configuration: "namedElements"))
-    api include(project(path: ":polymer-resource-pack", configuration: "namedElements"))
-    api include(project(path: ":polymer-blocks", configuration: "namedElements"))
-    api include(project(path: ":polymer-virtual-entity", configuration: "namedElements"))
+    api project(path: ":polymer-autohost", configuration: "namedElements")
+    api project(path: ":polymer-blocks", configuration: "namedElements")
+    api project(path: ":polymer-common", configuration: "namedElements")
+    api project(path: ":polymer-core", configuration: "namedElements")
+    api project(path: ":polymer-resource-pack", configuration: "namedElements")
+    api project(path: ":polymer-virtual-entity", configuration: "namedElements")
     //include(project(":polymer-client-extensions"))
+}
+
+def includes = [
+        'polymer-autohost',
+        'polymer-blocks',
+        'polymer-common',
+        'polymer-core',
+        'polymer-resource-pack',
+        'polymer-virtual-entity'
+]
+
+remapJar {
+    afterEvaluate {
+        includes.forEach {
+            nestedJars.from project(":"+it).tasks.named("remapJar")
+        }
+    }
 }
 
 void setupRepositories(RepositoryHandler repositories) {

@@ -78,15 +78,28 @@ dependencies {
 
     testmodImplementation sourceSets.main.output
 
-    api include(project(path: ':polymer-reg-sync-manipulator', configuration: 'namedElements'))
+    api project(path: ':polymer-reg-sync-manipulator', configuration: 'namedElements')
     api project(path: ':polymer-common', configuration: 'namedElements')
-    api include(project(path: ':polymer-networking', configuration: 'namedElements'))
+    api project(path: ':polymer-networking', configuration: 'namedElements')
 
     compileOnly (project(path: ':polymer-resource-pack', configuration: 'namedElements'))
     localRuntime (project(path: ':polymer-resource-pack', configuration: 'namedElements'))
 
     compileOnly (project(path: ':polymer-virtual-entity', configuration: 'namedElements'))
     localRuntime (project(path: ':polymer-virtual-entity', configuration: 'namedElements'))
+}
+
+def includes = [
+        'polymer-reg-sync-manipulator',
+        'polymer-networking'
+]
+
+remapJar {
+    afterEvaluate {
+        includes.forEach {
+            nestedJars.from project(":"+it).tasks.named("remapJar")
+        }
+    }
 }
 
 

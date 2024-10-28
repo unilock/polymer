@@ -7,7 +7,19 @@ loom {
 }
 
 dependencies {
-    api include(project(path: ':polymer-common', configuration: 'namedElements'))
+    api project(path: ':polymer-common', configuration: 'namedElements')
+}
+
+def includes = [
+        'polymer-common'
+]
+
+remapJar {
+    afterEvaluate {
+        includes.forEach {
+            nestedJars.from project(":"+it).tasks.named("remapJar")
+        }
+    }
 }
 
 afterEvaluate {
