@@ -39,8 +39,6 @@ public abstract class ItemGroupMixin implements ItemGroupExtra {
         var parent = new LinkedList<>(collector.parentTabStacks);
         var search = new LinkedList<>(collector.searchTabStacks);
         PolymerImplUtils.callItemGroupEvents(id, (ItemGroup) (Object) this, parent, search, context);
-        parent.removeIf(ItemStack::isEmpty);
-        search.removeIf(ItemStack::isEmpty);
         return new PolymerItemGroupUtils.Contents(parent, search);
     }
 
